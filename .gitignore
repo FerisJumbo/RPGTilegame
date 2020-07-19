@@ -1,0 +1,8 @@
+# This is the workspace folder for eclipse
+
+/.metadata
+
+# This is the Texture working directory and is ignored
+# to keep pictures off of github
+
+/TexturesPack
