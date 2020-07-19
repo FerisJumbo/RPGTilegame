@@ -2,6 +2,11 @@
 
 /.metadata
 
+# This is the dictionary for eclipse and completly
+# useless on github
+
+eclipsedictionary
+
 # This is the Texture working directory and is ignored
 # to keep pictures off of github
 
