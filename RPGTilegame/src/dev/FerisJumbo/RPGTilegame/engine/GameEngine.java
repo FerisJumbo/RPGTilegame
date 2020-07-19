@@ -1,10 +1,11 @@
 package dev.FerisJumbo.RPGTilegame.engine;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import dev.FerisJumbo.RPGTilegame.Assets;
 import dev.FerisJumbo.RPGTilegame.engine.display.Display;
+import dev.FerisJumbo.RPGTilegame.states.GameState;
 
 /**
  * 
@@ -22,7 +23,7 @@ public class GameEngine implements Runnable{
 	private Display display; // The actual display to render to the computer
 	
 	// The buffer strategy controls the buffer screens before drawing to the screen
-	// This prevents flickering
+	// this prevents flickering
 	private BufferStrategy bs; 
 	private Graphics g; // Graphics object that gives the display canvas information to draw
 	
@@ -44,8 +45,10 @@ public class GameEngine implements Runnable{
 	
 	// Used to init variables
 	private void init() {
+		Assets.init();
 		running = true;
 		display = new Display(title, width, height);
+		State.currentState = new GameState();
 	}
 
 	// Runs the game loop
@@ -81,6 +84,7 @@ public class GameEngine implements Runnable{
 	
 	// Updates variables values that are assigned to the current state
 	private void update() {
+		// Will update the current states update method if not null
 		if (State.currentState != null) {
 			State.currentState.update();
 		}
@@ -101,6 +105,7 @@ public class GameEngine implements Runnable{
 		
 		// Begin Draw
 		
+		// Will draw the current states render method if not null
 		if (State.currentState != null) {
 			State.currentState.render(g);
 		}

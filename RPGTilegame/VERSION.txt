@@ -1,1 +1,1 @@
-VERSION: alpha0.1.1
+VERSION: alpha0.1.2

@@ -3,9 +3,17 @@ package dev.FerisJumbo.RPGTilegame;
 import dev.FerisJumbo.RPGTilegame.engine.GameEngine;
 
 public class Launcher {
+	
+	private static String GAMENAME = "RPG Game";
+	private static  char VERSIONMOD = 'a'; // Alpha
+	private static String VERSION = "0.1.2";
 
 	public static void main(String[] args) {
-		GameEngine gm = new GameEngine("RPG Game - a0.1.1", 600, 400, 32);
+		// Creates a new game instance
+		GameEngine gm = new GameEngine((GAMENAME + " " + VERSIONMOD + VERSION),
+								600, 400, 32);
+		
+		// Starts the game thread
 		gm.start();
 	}
 
