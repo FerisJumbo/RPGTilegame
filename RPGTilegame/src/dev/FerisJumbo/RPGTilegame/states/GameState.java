@@ -13,23 +13,23 @@ import dev.FerisJumbo.RPGTilegame.engine.loading.World;
  */
 public class GameState extends State{
 	
-	private World world = new World("rsc/world/TestWorld1.txt");
+	private World world1;
 
 	/**
 	 * Empty Constructor
 	 */
-	public GameState() {
-		
+	public GameState(int winWidth, int winHeight) {
+		world1 = new World("rsc/world/TestWorld1.txt", winWidth, winHeight);
 	}
 
 	@Override
 	public void update() {
-		world.update();
+		world1.update();
 	}
 
 	@Override
 	public void render(Graphics g) {
-		world.render(g);
+		world1.render(g);
 	}
 
 }

@@ -2,6 +2,9 @@ package dev.FerisJumbo.RPGTilegame.engine.loading;
 
 import java.awt.Graphics;
 
+import dev.FerisJumbo.RPGTilegame.Assets;
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
+import dev.FerisJumbo.RPGTilegame.engine.object.entities.Player;
 import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
 import dev.FerisJumbo.RPGTilegame.engine.utils.Util;
 import dev.FerisJumbo.RPGTilegame.tiles.DirtTile;
@@ -22,13 +25,17 @@ public class World {
 	private int mWidth, mHeight; // Width and height of the map
 	private int spawnX, spawnY; // Player spawn point on the map
 	private int[][] tileMap; // Multidimensional array that stores tile data to load the world
-
+	private Player player; // Player object
+	private Camera cmr; // Camera object
+	
 	/**
 	 * Constructor of World and takes a path to load data from
 	 * @param path
 	 */
-	public World(String path) {
+	public World(String path, int winWidth, int winHeight) {
 		loadData(path);
+		cmr = new Camera(winWidth, winHeight, mWidth, mHeight, 0 , 0);
+		player = new Player(cmr, Assets.player, spawnX, spawnY, 64, 64);
 	}
 	
 	// Loads the data into this World object
@@ -57,7 +64,8 @@ public class World {
 	 * Update method of World
 	 */
 	public void update() {
-		
+		player.update();
+		cmr.update(player);
 	}
 	
 	/**
@@ -69,16 +77,17 @@ public class World {
 			for (int x = 0; x < mWidth; x++) {
 				int tileNum = tileMap[x][y];
 				if (tileNum == 1) {
-					new DirtTile(x, y).render(g);
+					new DirtTile(x, y, cmr).render(g);
 				}
 				else if (tileNum == 2) {
-					new GrassTile(x, y).render(g);
+					new GrassTile(x, y, cmr).render(g);
 				}
 				else {
-					new NoTile(x, y).render(g);
+					new NoTile(x, y, cmr).render(g);
 				}
 			}
 		}
+		player.render(g);
 	}
 	
 	

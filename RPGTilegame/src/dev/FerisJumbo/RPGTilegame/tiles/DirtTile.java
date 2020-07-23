@@ -3,6 +3,7 @@ package dev.FerisJumbo.RPGTilegame.tiles;
 import java.awt.Graphics;
 
 import dev.FerisJumbo.RPGTilegame.Assets;
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
 
 /**
@@ -17,8 +18,8 @@ public class DirtTile extends Tile {
 	 * @param x
 	 * @param y
 	 */
-	public DirtTile(int x, int y) {
-		super(Assets.dirt, x, y, true);
+	public DirtTile(int x, int y, Camera cmr) {
+		super(Assets.dirt, x, y, cmr, true);
 	}
 
 	@Override

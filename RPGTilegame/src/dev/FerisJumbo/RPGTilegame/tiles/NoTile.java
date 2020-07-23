@@ -3,6 +3,7 @@ package dev.FerisJumbo.RPGTilegame.tiles;
 import java.awt.Graphics;
 
 import dev.FerisJumbo.RPGTilegame.Assets;
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
 
 /**
@@ -18,8 +19,8 @@ public class NoTile extends Tile {
 	 * @param x
 	 * @param y
 	 */
-	public NoTile(int x, int y) {
-		super(Assets.none, x, y, true);
+	public NoTile(int x, int y, Camera cmr) {
+		super(Assets.none, x, y, cmr, true);
 	}
 
 	@Override

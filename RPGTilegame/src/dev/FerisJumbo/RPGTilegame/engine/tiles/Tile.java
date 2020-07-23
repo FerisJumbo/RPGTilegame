@@ -2,7 +2,8 @@ package dev.FerisJumbo.RPGTilegame.engine.tiles;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 
 /**
  * Houses the abstract to all Tile classes
@@ -28,15 +29,19 @@ public abstract class Tile {
 	 * @param y
 	 * @param passable
 	 */
-	public Tile(BufferedImage sprite, int x, int y, boolean passable) {
+	public Tile(BufferedImage sprite, int x, int y, Camera cmr, boolean passable) {
 		this.sprite = sprite;
-		this.x = x * TILE_WIDTH;
-		this.y = y * TILE_HEIGHT;
+		this.x = x * TILE_WIDTH - cmr.getXOffset();
+		this.y = y * TILE_HEIGHT - cmr.getYOffset();
 		this.width = TILE_WIDTH;
 		this.height = TILE_HEIGHT;
 		this.passable = passable;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isPassable() {
 		return passable;
 	}

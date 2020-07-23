@@ -48,7 +48,7 @@ public class GameEngine implements Runnable{
 		Assets.init();
 		running = true;
 		display = new Display(title, width, height);
-		State.currentState = new GameState();
+		State.currentState = new GameState(width, height);
 	}
 
 	// Runs the game loop
