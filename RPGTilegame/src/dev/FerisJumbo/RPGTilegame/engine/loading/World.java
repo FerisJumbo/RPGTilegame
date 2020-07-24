@@ -1,6 +1,7 @@
 package dev.FerisJumbo.RPGTilegame.engine.loading;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import dev.FerisJumbo.RPGTilegame.Assets;
 import dev.FerisJumbo.RPGTilegame.engine.KeyManager;
@@ -12,6 +13,7 @@ import dev.FerisJumbo.RPGTilegame.engine.utils.Util;
 import dev.FerisJumbo.RPGTilegame.tiles.DirtTile;
 import dev.FerisJumbo.RPGTilegame.tiles.GrassTile;
 import dev.FerisJumbo.RPGTilegame.tiles.NoTile;
+import dev.FerisJumbo.RPGTilegame.tiles.StoneWall;
 
 /**
  * Loads and stores world data like tile type and position
@@ -30,7 +32,7 @@ public class World {
 	private Player player; // Player object
 	private Camera cmr; // Camera object
 	
-	private Skeleton skel;
+	private Skeleton skel; // TEST Enemy
 	
 	/**
 	 * Constructor of World and takes a path to load data from
@@ -38,10 +40,14 @@ public class World {
 	 */
 	public World(String path, int winWidth, int winHeight) {
 		loadData(path);
-		cmr = new Camera(winWidth, winHeight, mWidth, mHeight, 0 , 0);
-		player = new Player(cmr, Assets.player, spawnX * Tile.TILE_WIDTH,
+		this.cmr = new Camera(winWidth, winHeight, mWidth, mHeight, 0 , 0);
+		this.player = new Player(cmr, Assets.player, spawnX * Tile.TILE_WIDTH,
 				spawnY * Tile.TILE_HEIGHT, 64, 64);
-		skel = new Skeleton(cmr, Assets.enemy, 0, 0, 64, 64);
+		
+		// TEST Enemy
+		this.skel = new Skeleton(cmr, Assets.enemy, 0, 0, 64, 64);
+		
+		storeData();
 	}
 	
 	// Loads the data into this World object
@@ -67,11 +73,41 @@ public class World {
 	}
 	
 	/**
+	 * Used to store the file data to memory for quick easy access
+	 */
+	public void storeData() {
+		cmr.update(player);
+		Tile.allTiles = new ArrayList<Tile>();
+		Tile.nonPassables = new ArrayList<Tile>();
+		
+		// Will store the tile data in the Tile object for quick loading
+		for (int y = 0; y < mHeight; y++) {
+			for (int x = 0; x < mWidth; x++) {
+				int tileNum = tileMap[x][y];
+				if (tileNum == 1) {
+					new DirtTile(x, y, cmr);
+				}
+				else if (tileNum == 2) {
+					new GrassTile(x, y, cmr);
+				}
+				else if (tileNum == 3) {
+					new StoneWall(x, y, cmr);
+				}
+				else {
+					new NoTile(x, y, cmr);
+				}
+			}
+		}
+	}
+	
+	/**
 	 * Update method of World
 	 */
 	public void update(KeyManager km) {
 		player.update(km);
 		cmr.update(player);
+		
+		// TEST Enemy
 		skel.targetEntity(player);
 		skel.update();
 	}
@@ -81,21 +117,15 @@ public class World {
 	 * @param g
 	 */
 	public void render(Graphics g) {
-		for (int y = 0; y < mHeight; y++) {
-			for (int x = 0; x < mWidth; x++) {
-				int tileNum = tileMap[x][y];
-				if (tileNum == 1) {
-					new DirtTile(x, y, cmr).render(g);
-				}
-				else if (tileNum == 2) {
-					new GrassTile(x, y, cmr).render(g);
-				}
-				else {
-					new NoTile(x, y, cmr).render(g);
-				}
-			}
+		// Loops through all the tiles to update their position
+		// relative to the camera
+		for (Tile t : Tile.allTiles) {
+			t.render(g);
 		}
+		
+		// TEST Enemy
 		skel.render(g);
+		
 		player.render(g);
 	}
 

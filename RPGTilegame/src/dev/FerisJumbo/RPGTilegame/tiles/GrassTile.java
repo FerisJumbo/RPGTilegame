@@ -1,7 +1,5 @@
 package dev.FerisJumbo.RPGTilegame.tiles;
 
-import java.awt.Graphics;
-
 import dev.FerisJumbo.RPGTilegame.Assets;
 import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
@@ -20,16 +18,6 @@ public class GrassTile extends Tile{
 	 */
 	public GrassTile(int x, int y, Camera cmr) {
 		super(Assets.grass, x, y, cmr, true);
-	}
-
-	@Override
-	public void update() {
-		
-	}
-
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(sprite, x, y, width, height, null);
 	}
 
 }

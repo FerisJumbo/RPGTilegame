@@ -10,7 +10,7 @@ public class Assets {
 	private static final int width = 32, height = 32;
 
 	// All the textures for the game init here
-	public static BufferedImage dirt, grass, none, player, enemy;
+	public static BufferedImage dirt, grass, none, player, enemy, stoneWall;
 	
 	/**
 	 * Initializes the spritesheet and crops the textures to fit
@@ -24,6 +24,7 @@ public class Assets {
 		grass = sheet1.crop(width * 2, 0, width, height);
 		none = sheet1.crop(width * 3, 0, width, height);
 		player = sheet1.crop(width * 4, 0, width, height);
+		stoneWall = sheet1.crop(width * 5, 0, width, height);
 		
 	}
 

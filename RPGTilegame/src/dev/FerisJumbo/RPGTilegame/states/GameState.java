@@ -14,6 +14,8 @@ import dev.FerisJumbo.RPGTilegame.engine.loading.World;
  */
 public class GameState extends State{
 	
+	public static World currentWorld; // The current world to be loaded
+	
 	private World world1;
 
 	/**
@@ -21,16 +23,18 @@ public class GameState extends State{
 	 */
 	public GameState(int winWidth, int winHeight) {
 		world1 = new World("rsc/worlds/world1.txt", winWidth, winHeight);
+		
+		currentWorld = world1;
 	}
 
 	@Override
 	public void render(Graphics g) {
-		world1.render(g);
+		currentWorld.render(g);
 	}
 
 	@Override
 	public void update(KeyManager km) {
-		world1.update(km);
+		currentWorld.update(km);
 	}
 
 }

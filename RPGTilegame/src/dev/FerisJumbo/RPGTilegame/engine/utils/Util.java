@@ -22,6 +22,7 @@ public class Util {
 		StringBuilder builder = new StringBuilder();
 		
 		try {
+			@SuppressWarnings("resource")
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			String line;
 			while ((line = br.readLine()) != null)

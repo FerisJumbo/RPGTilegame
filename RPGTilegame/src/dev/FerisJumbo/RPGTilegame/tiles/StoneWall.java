@@ -5,20 +5,22 @@ import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
 
 /**
- * No Tile Found Class
- * Used as placeholder or if their is no Tile made for the map yet
+ * A wall, its that simple
  * @author Cole Gartner
  *
  */
-public class NoTile extends Tile {
+public class StoneWall extends Tile {
 
 	/**
-	 * No Tile Constructor
+	 * Constructor for wall
+	 * @param sprite
 	 * @param x
 	 * @param y
+	 * @param cmr
+	 * @param passable
 	 */
-	public NoTile(int x, int y, Camera cmr) {
-		super(Assets.none, x, y, cmr, true);
+	public StoneWall(int x, int y, Camera cmr) {
+		super(Assets.stoneWall, x, y, cmr, false);
 	}
 
 }

@@ -12,8 +12,6 @@ import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
  *
  */
 public class Player extends Entity {
-	
-	private Camera cmr;
 
 	/**
 	 * Constructor for player
@@ -23,7 +21,6 @@ public class Player extends Entity {
 	 */
 	public Player(Camera cmr, BufferedImage img, int x, int y, int width, int height) {
 		super(cmr, img, x, y, width, height);
-		this.cmr = cmr;
 		this.speed = 2;
 	}
 	

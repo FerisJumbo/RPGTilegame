@@ -5,6 +5,11 @@ import java.awt.image.BufferedImage;
 
 import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 
+/**
+ * Test Class for enemies, might not be in release
+ * @author Cole Gartner
+ *
+ */
 public class Skeleton extends Enemy{
 
 	public Skeleton(Camera cmr, BufferedImage img, int x, int y, int width, int height) {
