@@ -14,8 +14,8 @@ eclipsedictionary
 
 # The save file of Inno compiler for security reasons
 
-/deploy/RPGinstall.iss
+/build/RPGinstall.iss
 
 # The compiled version of the game again for security reasons
 
-/deploy/Install Folder
+/build/deploy
