@@ -3,6 +3,8 @@ package dev.FerisJumbo.RPGTilegame.engine.object;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
+
 /**
  * This is the base abstract for everything in the game that
  * is not a tile
@@ -15,6 +17,7 @@ public abstract class DynamicObject {
 	
 	protected int vecx, vecy; // Vector x and y
 	protected int width, height;
+	protected Camera cmr;
 	
 	/**
 	 * Creates a new Dynamic object
@@ -22,12 +25,14 @@ public abstract class DynamicObject {
 	 * @param x
 	 * @param y
 	 */
-	public DynamicObject(BufferedImage img, int x, int y, int width, int height) {
+	public DynamicObject(Camera cmr, BufferedImage img, int x, int y,
+			int width, int height) {
 		this.sprite = img;
 		this.vecx = x;
 		this.vecy = y;
 		this.width = width;
 		this.height = height;
+		this.cmr = cmr;
 	}
 	
 	/**

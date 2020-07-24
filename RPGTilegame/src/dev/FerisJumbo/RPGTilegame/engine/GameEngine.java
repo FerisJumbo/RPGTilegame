@@ -27,6 +27,8 @@ public class GameEngine implements Runnable{
 	private BufferStrategy bs; 
 	private Graphics g; // Graphics object that gives the display canvas information to draw
 	
+	private KeyManager km; // Key manager to handle key presses
+	
 	/**
 	 * The Game Engine class handles the different states update and render methods
 	 * it is the main hub for variable changes and display this information to the
@@ -41,6 +43,7 @@ public class GameEngine implements Runnable{
 		this.width = width;
 		this.height = height;
 		this.tilesize = tilesize;
+		km = new KeyManager();
 	}
 	
 	// Used to init variables
@@ -48,6 +51,7 @@ public class GameEngine implements Runnable{
 		Assets.init();
 		running = true;
 		display = new Display(title, width, height);
+		display.getFrame().addKeyListener(km);
 		State.currentState = new GameState(width, height);
 	}
 
@@ -84,9 +88,10 @@ public class GameEngine implements Runnable{
 	
 	// Updates variables values that are assigned to the current state
 	private void update() {
+		km.update();
 		// Will update the current states update method if not null
 		if (State.currentState != null) {
-			State.currentState.update();
+			State.currentState.update(km);
 		}
 	}
 	

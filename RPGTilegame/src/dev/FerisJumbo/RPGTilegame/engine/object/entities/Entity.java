@@ -2,6 +2,7 @@ package dev.FerisJumbo.RPGTilegame.engine.object.entities;
 
 import java.awt.image.BufferedImage;
 
+import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.object.DynamicObject;
 
 /**
@@ -13,16 +14,19 @@ public abstract class Entity extends DynamicObject {
 	
 	protected int velx, vely; // Tracks velocity of Entity
 
+	protected int speed; // Speed of the entity
+
 	/**
 	 * Creates a new Entity
 	 * @param img
 	 * @param x
 	 * @param y
 	 */
-	public Entity(BufferedImage img, int x, int y, int width, int height) {
-		super(img, x, y, width, height);
+	public Entity(Camera cmr, BufferedImage img, int x, int y, int width, int height) {
+		super(cmr, img, x, y, width, height);
 		velx = 0;
 		vely = 0;
+		speed = 1;
 	}
 	
 	// Moves the entity with its velocity

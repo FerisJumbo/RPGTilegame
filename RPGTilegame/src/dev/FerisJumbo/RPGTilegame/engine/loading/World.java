@@ -3,9 +3,10 @@ package dev.FerisJumbo.RPGTilegame.engine.loading;
 import java.awt.Graphics;
 
 import dev.FerisJumbo.RPGTilegame.Assets;
+import dev.FerisJumbo.RPGTilegame.engine.KeyManager;
 import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.object.entities.Player;
-import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
+import dev.FerisJumbo.RPGTilegame.engine.object.entities.Skeleton;
 import dev.FerisJumbo.RPGTilegame.engine.utils.Util;
 import dev.FerisJumbo.RPGTilegame.tiles.DirtTile;
 import dev.FerisJumbo.RPGTilegame.tiles.GrassTile;
@@ -28,6 +29,8 @@ public class World {
 	private Player player; // Player object
 	private Camera cmr; // Camera object
 	
+	private Skeleton skel;
+	
 	/**
 	 * Constructor of World and takes a path to load data from
 	 * @param path
@@ -36,6 +39,7 @@ public class World {
 		loadData(path);
 		cmr = new Camera(winWidth, winHeight, mWidth, mHeight, 0 , 0);
 		player = new Player(cmr, Assets.player, spawnX, spawnY, 64, 64);
+		skel = new Skeleton(cmr, Assets.enemy, 200, 200, 64, 64);
 	}
 	
 	// Loads the data into this World object
@@ -63,9 +67,11 @@ public class World {
 	/**
 	 * Update method of World
 	 */
-	public void update() {
-		player.update();
+	public void update(KeyManager km) {
+		player.update(km);
 		cmr.update(player);
+		skel.targetEntity(player);
+		skel.update();
 	}
 	
 	/**
@@ -87,9 +93,8 @@ public class World {
 				}
 			}
 		}
+		skel.render(g);
 		player.render(g);
 	}
-	
-	
 
 }

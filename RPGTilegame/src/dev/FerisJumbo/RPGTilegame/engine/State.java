@@ -12,7 +12,7 @@ public abstract class State {
 
 	public static State currentState = null;
 	
-	public abstract void update();
+	public abstract void update(KeyManager km);
 	
 	public abstract void render(Graphics g);
 

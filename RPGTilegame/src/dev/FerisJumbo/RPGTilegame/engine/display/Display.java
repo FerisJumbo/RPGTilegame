@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  */
 public class Display {
 	
-	private JFrame display;
+	private JFrame frame;
 	private Canvas canvas;
 	
 	private String gameTitle;
@@ -39,31 +39,32 @@ public class Display {
 	 * operate
 	 */
 	private void initDisplay() {
-		display = new JFrame(gameTitle);
-		display.setSize(width, height);
-		display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		display.setResizable(false);
-		display.setLocationRelativeTo(null);
-		display.setVisible(true);
+		frame = new JFrame(gameTitle);
+		frame.setSize(width, height);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height));
 		canvas.setMaximumSize(new Dimension(width, height));
 		canvas.setMinimumSize(new Dimension(width, height));
+		canvas.setFocusable(false);
 		
-		display.add(canvas);
-		display.pack();
+		frame.add(canvas);
+		frame.pack();
 		
 	}
 	
 	// Getters and Setters \\
 
-	public JFrame getDisplay() {
-		return display;
+	public JFrame getFrame() {
+		return frame;
 	}
 
-	public void setDisplay(JFrame display) {
-		this.display = display;
+	public void setGrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 	public Canvas getCanvas() {

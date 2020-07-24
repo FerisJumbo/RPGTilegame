@@ -2,6 +2,7 @@ package dev.FerisJumbo.RPGTilegame.states;
 
 import java.awt.Graphics;
 
+import dev.FerisJumbo.RPGTilegame.engine.KeyManager;
 import dev.FerisJumbo.RPGTilegame.engine.State;
 import dev.FerisJumbo.RPGTilegame.engine.loading.World;
 
@@ -23,13 +24,13 @@ public class GameState extends State{
 	}
 
 	@Override
-	public void update() {
-		world1.update();
+	public void render(Graphics g) {
+		world1.render(g);
 	}
 
 	@Override
-	public void render(Graphics g) {
-		world1.render(g);
+	public void update(KeyManager km) {
+		world1.update(km);
 	}
 
 }

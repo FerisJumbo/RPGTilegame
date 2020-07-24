@@ -7,7 +7,7 @@ public class Launcher {
 	
 	private static String GAMENAME = "RPG Game";
 	private static  char VERSIONMOD = 'a'; // Alpha
-	private static String VERSION = "0.1.3";
+	private static String VERSION = "0.1.4";
 
 	public static void main(String[] args) {
 		// Creates a new game instance
