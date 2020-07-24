@@ -11,3 +11,11 @@ eclipsedictionary
 # to keep pictures off of github
 
 /TexturesPack
+
+# The save file of Inno compiler for security reasons
+
+/deploy/RPGinstall.iss
+
+# The compiled version of the game again for security reasons
+
+/deploy/Install Folder

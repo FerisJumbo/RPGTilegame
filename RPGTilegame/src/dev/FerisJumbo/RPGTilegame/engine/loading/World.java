@@ -7,6 +7,7 @@ import dev.FerisJumbo.RPGTilegame.engine.KeyManager;
 import dev.FerisJumbo.RPGTilegame.engine.camera.Camera;
 import dev.FerisJumbo.RPGTilegame.engine.object.entities.Player;
 import dev.FerisJumbo.RPGTilegame.engine.object.entities.Skeleton;
+import dev.FerisJumbo.RPGTilegame.engine.tiles.Tile;
 import dev.FerisJumbo.RPGTilegame.engine.utils.Util;
 import dev.FerisJumbo.RPGTilegame.tiles.DirtTile;
 import dev.FerisJumbo.RPGTilegame.tiles.GrassTile;
@@ -38,8 +39,9 @@ public class World {
 	public World(String path, int winWidth, int winHeight) {
 		loadData(path);
 		cmr = new Camera(winWidth, winHeight, mWidth, mHeight, 0 , 0);
-		player = new Player(cmr, Assets.player, spawnX, spawnY, 64, 64);
-		skel = new Skeleton(cmr, Assets.enemy, 200, 200, 64, 64);
+		player = new Player(cmr, Assets.player, spawnX * Tile.TILE_WIDTH,
+				spawnY * Tile.TILE_HEIGHT, 64, 64);
+		skel = new Skeleton(cmr, Assets.enemy, 0, 0, 64, 64);
 	}
 	
 	// Loads the data into this World object

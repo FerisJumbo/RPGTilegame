@@ -20,7 +20,7 @@ public class GameState extends State{
 	 * Empty Constructor
 	 */
 	public GameState(int winWidth, int winHeight) {
-		world1 = new World("rsc/world/TestWorld1.txt", winWidth, winHeight);
+		world1 = new World("resources/worlds/world1.txt", winWidth, winHeight);
 	}
 
 	@Override
